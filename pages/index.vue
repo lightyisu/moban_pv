@@ -5,35 +5,46 @@
       <div class="lists">
         <el-card
           :body-style="{ padding: '0px' }"
-          v-for="index in 10"
+          v-for="(item,index) in res.data"
           :key="index"
         >
           <img
-            src="https://www.lilixing.com/wp-content/themes/ceomax/timthumb.php?src=https://www.lilixing.com/wp-content/uploads/2022/03/479ae50a2aaaab4c840002105a5f1de5.png&h=200&w=300&zc=1&a=c&q=100&s=1"
+            :src=item.cover
             class="image"
           />
           <div style="padding: 14px">
-            <p>航海王HTML简单网页设计作品海贼王网页制作 4页 带视频</p>
+            <p>{{item.title}}</p>
             <p>
               <el-tag type="info"> DIV </el-tag>
               <el-tag type="info"> CSS </el-tag>
             </p>
 
             <div class="bottom clearfix">
-              <Nuxt-link to="/detail/312">
+              <Nuxt-link :to="'/detail/'+item.id">
                 <el-button type="primary" class="button">下载</el-button>
               </Nuxt-link>
             </div>
           </div>
+       
         </el-card>
       </div>
+      
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
-  name: "IndexPage",
+ async asyncData(){
+  
+       let {data:res}=await axios.get('https://asop2rq5.directus.app/items/moban');
+    return{
+        res
+      }
+   
+ 
+ }
 };
 </script>
 <style lang="scss" scoped>
