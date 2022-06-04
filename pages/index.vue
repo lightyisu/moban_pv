@@ -55,6 +55,11 @@ export default {
 .content {
   width: 1000px;
   padding: 20px 0;
+     @media screen and (max-width: 800px) {
+    & {
+      width: 90%;
+    }
+  }
 }
 h2 {
   position: relative;

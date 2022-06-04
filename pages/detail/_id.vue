@@ -4,30 +4,25 @@
       <h2>模板详情</h2>
       <el-card :body-style="{ padding: '40px' }">
         <div class="title" slot="header">
-          <h4>{{res.title}}</h4>
+          <h4>{{ res.title }}</h4>
         </div>
         <h2>预览(点击查看大图)</h2>
-        <div class="block">
-          <el-carousel trigger="click" height="550px">
-            <el-carousel-item v-for="item in res.img" :key="item">
-              <el-image
-              
-                style="height: 100%"
-                :src=item
-                :preview-src-list="[
-                  item,
-                ]"
-              >
-              </el-image>
-            </el-carousel-item>
-          </el-carousel>
-        </div>
-
+        <p>
+          <el-image
+            v-for="item in res.img"
+            :key="item"
+            style="height: 100%"
+            :src="item"
+            class="image"
+            :preview-src-list="[item]"
+          >
+          </el-image>
+        </p>
 
         <div style="padding: 14px">
           <h2>作品介绍</h2>
           <p>
-            {{res.desc}}
+            {{ res.desc }}
           </p>
           <h2>作品设计结构</h2>
           <p>
@@ -46,11 +41,19 @@
 点击链接直接打开"
             >
               <el-button type="primary" class="button" slot="reference"
-                >下载(闲鱼咨询)</el-button
+                >下载</el-button
               >
             </el-popover>
+            <a href="https://m.tb.cn/h.ftlkCNU?tk=BAqO2OxvO3Q" target="_blank">
+              <el-button type="primary" class="button" slot="reference"
+                >去闲鱼咨询</el-button
+              >
+            </a>
+           
+                <el-button type="primary" class="button" slot="reference"
+                >爱发电赞助</el-button
+              >
           </div>
-    
         </div>
       </el-card>
     </div>
@@ -60,14 +63,14 @@
 <script>
 import axios from "axios";
 export default {
-  async asyncData({params}) {
- 
-        let {data}=await axios.get('https://asop2rq5.directus.app/items/moban/'+params.id)
-        let res=data.data
-      return {
-      res
-      };
-    
+  async asyncData({ params }) {
+    let { data } = await axios.get(
+      "https://asop2rq5.directus.app/items/moban/" + params.id
+    );
+    let res = data.data;
+    return {
+      res,
+    };
   },
 };
 </script>
@@ -79,6 +82,11 @@ export default {
 .content {
   width: 1000px;
   padding: 20px 0;
+  @media screen and (max-width: 800px) {
+    & {
+      width: 90vw;
+    }
+  }
 }
 h2 {
   position: relative;
@@ -102,7 +110,13 @@ h2::after {
   background-color: #ffc300;
 }
 .image {
-  width: 400px;
+  width: 40%;
+  padding: 5px;
+    @media screen and (max-width: 800px) {
+    & {
+      width: 90%;
+    }
+  }
 }
 h4 {
   font-size: 20px;
@@ -118,14 +132,7 @@ h4 {
   color: black;
   font-weight: bold;
 }
-.el-carousel__item h3 {
-  color: #475669;
-  font-size: 14px;
-  opacity: 0.75;
-  line-height: 150px;
-  margin: 0;
-}
-.el-carousel {
-  width: 650px;
+.button{
+  margin: 10px 0;
 }
 </style>

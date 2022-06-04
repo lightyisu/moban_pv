@@ -2,7 +2,7 @@
   <div class="footer">
       <img width="150px" src='~/assets/box.png'/>
     <div>
-        &copy;2022 模板分享
+        &copy;2022
     </div>
   </div>
 </template>
