@@ -14,6 +14,7 @@
             style="height: 100%"
             :src="item"
             class="image"
+            lazy
             :preview-src-list="[item]"
           >
           </el-image>
@@ -50,9 +51,7 @@
               >
             </a>
            
-                <el-button type="primary" class="button" slot="reference"
-                >爱发电赞助</el-button
-              >
+         
           </div>
         </div>
       </el-card>

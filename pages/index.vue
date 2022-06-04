@@ -8,10 +8,11 @@
           v-for="(item,index) in res.data"
           :key="index"
         >
-          <img
+          <el-image
             :src=item.cover
             class="image"
-          />
+            lazy
+          ></el-image>
           <div style="padding: 14px">
             <p>{{item.title}}</p>
             <p>
@@ -48,6 +49,11 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.image{
+  width: 100%;
+  max-height: 230px;
+ 
+}
 .wrapper {
   display: flex;
   justify-content: center;
@@ -86,6 +92,7 @@ h2::after {
   display: inline-block;
   margin: 15px;
   width: 300px;
+  
   .el-button {
     color: black;
     font-weight: bold;

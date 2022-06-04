@@ -4,7 +4,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'moban',
+    title: '模板中文',
     htmlAttrs: {
       lang: 'en'
     },
