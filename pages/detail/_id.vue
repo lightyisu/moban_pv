@@ -1,11 +1,18 @@
 <template>
   <div class="wrapper">
     <div class="content">
-      <h2>模板详情</h2>
+      <h2>制作详情</h2>
+   
+       
       <el-card :body-style="{ padding: '40px' }">
         <div class="title" slot="header">
           <h4>{{ res.title }}</h4>
         </div>
+        <p v-if="res.recommend" style="font-size:24px">
+           <i class="el-icon-circle-check" style="color:green;font-size: 24px;"></i>
+        推荐作品(高质量作品)
+        </p>
+            
         <h2>预览(点击查看大图)</h2>
         <p>
           <el-image

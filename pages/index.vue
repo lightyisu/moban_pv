@@ -1,13 +1,19 @@
 <template>
   <div class="wrapper">
     <div class="content">
-      <h2>HTML模板</h2>
+      <h2>HTML制作效果展示</h2>
+    
       <div class="lists">
         <el-card
           :body-style="{ padding: '0px' }"
-          v-for="(item,index) in res.data"
+          v-for="(item,index) in res"
           :key="index"
         >
+        <div v-if="item.recommend" class="highlight">
+        <i class="el-icon-circle-check" style="color:green"></i>
+        推荐作品
+        </div>
+
           <el-image
             :src=item.cover
             class="image"
@@ -31,15 +37,19 @@
       </div>
       
     </div>
+ 
   </div>
+  
 </template>
 
 <script>
 import axios from "axios";
+import reverse from "lodash/reverse"
 export default {
  async asyncData(){
   
        let {data:res}=await axios.get('https://asop2rq5.directus.app/items/moban');
+       res=reverse(res.data)
     return{
         res
       }
@@ -49,9 +59,22 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.highlight{
+  position: absolute;
+  width: 100%;
+  z-index:100;
+  font-weight: bold;
+  top: 0;
+  left: 0;
+  height: 20px;
+  background: #ffc609db;
+  padding: 10px;
+  text-align: center;
+
+}
 .image{
   width: 100%;
-  max-height: 230px;
+  max-height: 200px;
  
 }
 .wrapper {
@@ -90,6 +113,7 @@ h2::after {
 }
 ::v-deep .el-card {
   display: inline-block;
+  position: relative;
   margin: 15px;
   width: 300px;
   
