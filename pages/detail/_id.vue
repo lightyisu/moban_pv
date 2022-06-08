@@ -2,17 +2,26 @@
   <div class="wrapper">
     <div class="content">
       <h2>制作详情</h2>
-   
-       
+
       <el-card :body-style="{ padding: '40px' }">
         <div class="title" slot="header">
           <h4>{{ res.title }}</h4>
-        </div>
-        <p v-if="res.recommend" style="font-size:24px">
-           <i class="el-icon-circle-check" style="color:green;font-size: 24px;"></i>
-        推荐作品(高质量作品)
+            <p v-if="res.recommend" style="font-size: 20px;margin:10px 0">
+          <i
+            class="el-icon-circle-check"
+            style="color: green; font-size: 20px"
+          ></i>
+          推荐作品(高质量作品)
         </p>
-            
+        </div>
+        <h2>获得步骤</h2>
+        <el-steps :active=0 finish-status="success">
+          <el-step title="选取喜欢的网页效果"></el-step>
+          <el-step title="打开闲鱼链接"></el-step>
+          <el-step title="向我提出需求"></el-step>
+        </el-steps>
+      
+
         <h2>预览(点击查看大图)</h2>
         <p>
           <el-image
@@ -57,8 +66,6 @@
                 >去闲鱼咨询</el-button
               >
             </a>
-           
-         
           </div>
         </div>
       </el-card>
@@ -118,7 +125,7 @@ h2::after {
 .image {
   width: 40%;
   padding: 5px;
-    @media screen and (max-width: 800px) {
+  @media screen and (max-width: 800px) {
     & {
       width: 90%;
     }
@@ -138,7 +145,7 @@ h4 {
   color: black;
   font-weight: bold;
 }
-.button{
+.button {
   margin: 10px 0;
 }
 </style>
